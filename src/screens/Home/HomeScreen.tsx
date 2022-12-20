@@ -18,7 +18,7 @@ interface props{
  navigation:NativeStackNavigationProp<HomeStackParamList,'ProductDetail'>
 }
 
-const HomeScreen = ({ navigation, productsAction, products, addToCart }:props) => {
+const HomeScreen:React.FC<props> = ({ navigation, productsAction, products, addToCart }):JSX.Element => {
 
   const [searchText, setSearchText] = useState("");
   const [like, setLike] = useState(false)

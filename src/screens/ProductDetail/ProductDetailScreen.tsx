@@ -12,15 +12,13 @@ import { HomeStackParamList } from '../../navigation';
 import { RootState,AppDispatch} from '../../store';
 
 interface props{
-    route:RouteProp<HomeStackParamList,'ProductDetail'>
-    navigation:NativeStackNavigationProp<HomeStackParamList>
-    addToCart:({})=>void
-    products:{count:string}
-    
-
+    route:RouteProp<HomeStackParamList,'ProductDetail'>;
+    navigation:NativeStackNavigationProp<HomeStackParamList>;
+    addToCart:({})=>void;
+    products:{count:number};
 }
 
-const ProductDetailScreen = ({ route, navigation, addToCart, products }:props) => {
+const ProductDetailScreen:React.FC<props> = ({ route, navigation, addToCart, products }):JSX.Element => {
   
     const data= route?.params?.data;
     const { count } = products;
@@ -76,5 +74,5 @@ const mapStateToProps = (state:RootState) => ({
 const mapDispatchToProps = {
     addToCart,
 }
-export default connect(mapStateToProps, mapDispatchToProps)(ProductDetailScreen)
+export default connect(mapStateToProps,mapDispatchToProps)(ProductDetailScreen)
 

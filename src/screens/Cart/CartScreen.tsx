@@ -14,9 +14,10 @@ interface props{
     decrement:(id:number)=>void,
     removeFromCart:(id:number)=>void
 }
-const CartScreen = ({ navigation, products, increment, decrement, removeFromCart }:props) => {
+const CartScreen:React.FC<props> = ({ navigation, products, increment, decrement, removeFromCart }):JSX.Element => {
+   
     const { cart, total } = products;
-    console.log(products)
+   
     return (
         <SafeAreaView style={styles.container}>
             <CartScreenHeader navigation={navigation} />
