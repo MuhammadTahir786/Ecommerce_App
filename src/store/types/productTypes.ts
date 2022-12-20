@@ -1,0 +1,3 @@
+export const PRODUCTS_TYPES={
+    SET_PRODUCTS_DATA:"SET_PRODUCTS_DATA",
+}
