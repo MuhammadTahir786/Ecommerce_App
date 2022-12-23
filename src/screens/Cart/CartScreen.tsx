@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { SafeAreaView, Text, TouchableOpacity, View, Image, ScrollView } from 'react-native'
 import { styles } from './style';
 import { connect } from 'react-redux';
@@ -6,18 +6,18 @@ import { removeFromCart, decrement, increment } from '../../store/actions/cartAc
 import CartScreenHeader from '../../components/CartScreenHeader';
 import CartList from '../../components/CartList';
 import { RootState } from '../../store';
+import Animated from 'react-native-reanimated';
 
-interface props{
-    navigation:any,
-    products:{cart:{ id: number;name: string;price: number;quantity: number;image: any;}[],total:number},
-    increment:(id:number)=>void,
-    decrement:(id:number)=>void,
-    removeFromCart:(id:number)=>void
+interface props {
+    navigation: any,
+    products: { cart: { id: number; name: string; price: number; quantity: number; image: any; }[], total: number },
+    increment: (id: number) => void,
+    decrement: (id: number) => void,
+    removeFromCart: (id: number) => void
 }
-const CartScreen:React.FC<props> = ({ navigation, products, increment, decrement, removeFromCart }):JSX.Element => {
-   
+const CartScreen: React.FC<props> = ({ navigation, products, increment, decrement, removeFromCart }): JSX.Element => {
+
     const { cart, total } = products;
-   
     return (
         <SafeAreaView style={styles.container}>
             <CartScreenHeader navigation={navigation} />
@@ -40,7 +40,7 @@ const CartScreen:React.FC<props> = ({ navigation, products, increment, decrement
         </SafeAreaView>
     )
 }
-const mapStateToProps = (state:RootState) => ({
+const mapStateToProps = (state: RootState) => ({
     products: state.products
 })
 const mapDispatchToProps = {

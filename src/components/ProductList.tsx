@@ -2,6 +2,7 @@ import React from 'react'
 import { View,FlatList,TouchableOpacity,Text,Image,StyleSheet } from 'react-native'
 import { HomeStackParamList } from '../navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import Animated,{ZoomIn} from 'react-native-reanimated';
 
 interface props{
     navigation:NativeStackNavigationProp<HomeStackParamList>
@@ -12,7 +13,7 @@ interface props{
 
 const ProductList = ({navigation,data,searchText,addToCart}:props) => {
   return (
-    <View style={styles.productListMainContainer}>
+    <Animated.View  entering={ZoomIn} style={styles.productListMainContainer}>
       <FlatList
         data={data.filter((item) => item.name.toUpperCase().includes(searchText.toUpperCase()))}
         numColumns={2}
@@ -32,7 +33,7 @@ const ProductList = ({navigation,data,searchText,addToCart}:props) => {
           )
         }}
       />
-    </View>
+    </Animated.View>
   )
 }
 

@@ -4,7 +4,7 @@ import { Rating } from 'react-native-elements';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { HomeStackParamList } from '../navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-
+import Animated,{ZoomIn,ZoomInLeft} from 'react-native-reanimated';
 interface props{
     navigation:NativeStackNavigationProp<HomeStackParamList>
     data:{id:number,name:string,price:number,quantity:number,image:any}[],
@@ -16,7 +16,7 @@ interface props{
 
 const HorizentalProductList = ({ data, like, setLike,addToCart,navigation,searchText }:props) => {
     return (
-        <View style={styles.listContainer}>
+        <Animated.View entering={ZoomIn} style={styles.listContainer}>
             <FlatList
                 data={data.filter((item) => item.name.toUpperCase().includes(searchText.toUpperCase()))}
                 horizontal
@@ -49,7 +49,7 @@ const HorizentalProductList = ({ data, like, setLike,addToCart,navigation,search
                     )
                 }}
             />
-        </View>
+        </Animated.View>
     )
 }
 
