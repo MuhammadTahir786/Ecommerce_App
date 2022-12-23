@@ -28,5 +28,5 @@ export default HomeScreenHeader
 const styles = StyleSheet.create({
     headerContainer: { flexDirection: "row", justifyContent: "space-between", marginHorizontal: 10, marginVertical: 20 },
     headerText: { color: "white", fontSize: 25, fontWeight: "bold" },
-    headerIconCount: { backgroundColor: "red", width: 20, borderRadius: 50, textAlign: "center", color: "white", position: "absolute", zIndex: 1, right: 25 },
+    headerIconCount: { backgroundColor: "red", width: 20, borderRadius: 100, textAlign: "center", color: "white", position: "absolute", zIndex: 1, right: 25 },
 })

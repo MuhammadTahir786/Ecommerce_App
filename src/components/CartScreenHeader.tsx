@@ -15,7 +15,6 @@ const CartScreenHeader = ({navigation}:props) => {
             </TouchableOpacity>
             <Text style={{ color: "black", textAlign: "center", fontSize: 18, fontWeight: "bold", left: 100 }}>Checkout</Text>
         </View>
-
     )
 }
 
