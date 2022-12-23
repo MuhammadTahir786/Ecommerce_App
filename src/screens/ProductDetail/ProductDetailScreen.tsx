@@ -17,10 +17,10 @@ interface props{
     addToCart:({})=>void;
     products:{count:number};
 }
-
 const ProductDetailScreen:React.FC<props> = ({ route, navigation, addToCart, products }):JSX.Element => {
   
     const data= route?.params?.data;
+    console.log("data",data)
     const { count } = products;
     const [like, setLike] = useState(false)
 
@@ -42,9 +42,12 @@ const ProductDetailScreen:React.FC<props> = ({ route, navigation, addToCart, pro
                 <View>
                     <View style={styles.productInfoContainer}>
                         <Text style={styles.productName}>{data?.name}</Text>
+                        <View style={styles.productLikeIcon}>
                         <TouchableOpacity onPress={() => { setLike(!like) }}>
-                            <AntDesign name={like ? 'heart' : 'hearto'} size={20} style={{ ...styles.productLikeIcon, color: like ? 'red' : "gray" }} />
+                            <AntDesign name={like ? 'heart' : 'hearto'} size={20} style={{color: like ? 'red' : "gray" }} />
                         </TouchableOpacity>
+                        </View>
+                       
                     </View>
                     <View style={styles.productRatingContainer}>
                         <View>

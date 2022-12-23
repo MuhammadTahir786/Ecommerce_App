@@ -14,7 +14,8 @@
     "@types/redux": "^3.6.0",
     "@types/redux-thunk": "^2.1.0",
     "react": "18.1.0",
-    "react-native": "0.70.6"
+    "react-native": "0.70.6",
+    "react-native-reanimated": "^2.13.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

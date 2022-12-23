@@ -11,7 +11,7 @@ import ProductDetailScreen from '../screens/ProductDetail/ProductDetailScreen'
 export type HomeStackParamList = {
     Home: undefined,
     Cart: undefined,
-    ProductDetail: { data: {name:string,image:any,price:number} }
+    ProductDetail: { data: {name:string,image:any,price:number,quantity:number} }
 }
 
 const Stack = createNativeStackNavigator<HomeStackParamList>();

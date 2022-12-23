@@ -34,10 +34,12 @@ const HorizentalProductList = ({ data, like, setLike,addToCart,navigation,search
                             <View style={styles.itemBottomContainer}>
                                 <Text style={styles.itemPrice}>$ {item.price}</Text>
                                 <View style={{ flexDirection: "row" }}>
+                                    <View style={styles.likeIcon}>
                                     <TouchableOpacity onPress={() => { setLike(!like) }}>
-                                        <AntDesign name={like ? 'heart' : 'hearto'} size={20} style={{ ...styles.likeIcon, color: like ? 'red' : "gray" }} />
+                                        <AntDesign name={like ? 'heart' : 'hearto'} size={20} style={{ color: like ? 'red' : "gray" }} />
                                     </TouchableOpacity>
-                                    <TouchableOpacity onPress={()=>{addToCart(item)}}>
+                                    </View>
+                                    <TouchableOpacity onPress={()=>{console.log("Horizental Item",item),addToCart(item)}}>
                                         <AntDesign name={'plus'} size={20} style={styles.cartIcon} />
                                     </TouchableOpacity>
                                 </View>
@@ -54,7 +56,7 @@ const HorizentalProductList = ({ data, like, setLike,addToCart,navigation,search
 export default HorizentalProductList
 
 const styles = StyleSheet.create({
-    listContainer: { height: 200, marginTop: 20, marginLeft: 5 },
+    listContainer: { height: 200, marginTop: 20, marginLeft: 5,paddingHorizontal:10 },
     productListContainer: { backgroundColor: "white", elevation: 1, marginHorizontal: 5, borderRadius: 20, paddingHorizontal: 20 },
     image: { width: 200, height: 100 },
     itemName: { color: "black", fontWeight: "bold", fontSize: 18 },

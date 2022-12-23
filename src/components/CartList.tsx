@@ -1,20 +1,25 @@
 import React from 'react'
 import { Text, TouchableOpacity, View, Image, StyleSheet } from 'react-native'
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import Animated, { Easing, FadeInDown, Layout, SlideOutDown, SlideOutLeft } from 'react-native-reanimated';
 
-interface props{
-    cart:{id:number,name:string,price:number,quantity:number,image:any}[],
-    increment:(id:number)=>void,
-    decrement:(id:number)=>void,
-    removeFromCart:(id:number)=>void
+interface props {
+    cart: { id: number, name: string, price: number, quantity: number, image: any }[],
+    increment: (id: number) => void,
+    decrement: (id: number) => void,
+    removeFromCart: (id: number) => void
 }
 
-const CartList = ({ cart, removeFromCart, increment, decrement }:props) => {
+const CartList = ({ cart, removeFromCart, increment, decrement }: props) => {
     return (
         <>
             {cart?.map((item, index) => {
                 return (
-                    <View key={index} style={styles.cartListContainer}>
+                    <Animated.View
+                        key={index}
+                        layout={Layout.easing(Easing.bounce).delay(index * 100)}
+                        exiting={SlideOutLeft}
+                        style={styles.cartListContainer}>
                         <Image source={item.image} resizeMode="contain" style={styles.image} />
                         <View style={styles.listDetailContainer}>
                             <View style={styles.listAlignContainer}>
@@ -36,7 +41,7 @@ const CartList = ({ cart, removeFromCart, increment, decrement }:props) => {
                                 </View>
                             </View>
                         </View>
-                    </View>
+                    </Animated.View>
                 )
             })}
         </>
@@ -46,7 +51,7 @@ const CartList = ({ cart, removeFromCart, increment, decrement }:props) => {
 export default CartList
 
 const styles = StyleSheet.create({
-    cartListContainer: { flexDirection: "row", marginHorizontal: 20, marginVertical: 10, backgroundColor: "#E4EEFB", padding: 10, borderRadius: 20 },
+    cartListContainer: { flexDirection: "row", marginHorizontal: 20, marginVertical: 10, backgroundColor: "#ccd9eb", padding: 10, borderRadius: 20 },
     image: { width: 100, height: 100, borderRadius: 20 },
     listDetailContainer: { flexDirection: "column", justifyContent: "space-between", flex: 1 },
     listAlignContainer: { marginHorizontal: 10, flexDirection: "row", alignItems: "center", justifyContent: "space-between" },

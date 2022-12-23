@@ -31,11 +31,9 @@ export const productsData = [
         "price": 400,
         "quantity": 1,
         "selected": false
-    }
-]
-export const ProductListData=[
+    },
     {
-        "id": 1,
+        "id": 5,
         "name": "Playstation Controller",
         "image": require('../assets/playstation.png'),
         "price": 400,
@@ -43,7 +41,25 @@ export const ProductListData=[
         "selected": false
     },
     {
-        "id": 2,
+        "id": 6,
+        "name": "Apple Watch",
+        "image": require('../assets/watch.png'),
+        "price": 800,
+        "quantity": 1,
+        "selected": false
+    }
+]
+export const ProductListData=[
+    {
+        "id": 5,
+        "name": "Playstation Controller",
+        "image": require('../assets/playstation.png'),
+        "price": 400,
+        "quantity": 1,
+        "selected": false
+    },
+    {
+        "id": 6,
         "name": "Apple Watch",
         "image": require('../assets/watch.png'),
         "price": 800,
