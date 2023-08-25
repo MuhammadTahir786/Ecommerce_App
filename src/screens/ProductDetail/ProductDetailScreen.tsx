@@ -9,18 +9,18 @@ import { connect } from 'react-redux';
 import { RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { HomeStackParamList } from '../../navigation';
-import { RootState,AppDispatch} from '../../store';
+import { RootState, AppDispatch } from '../../store';
 
-interface props{
-    route:RouteProp<HomeStackParamList,'ProductDetail'>;
-    navigation:NativeStackNavigationProp<HomeStackParamList>;
-    addToCart:({})=>void;
-    products:{count:number};
+interface props {
+    route: RouteProp<HomeStackParamList, 'ProductDetail'>;
+    navigation: NativeStackNavigationProp<HomeStackParamList>;
+    addToCart: ({ }) => void;
+    products: { count: number };
 }
-const ProductDetailScreen:React.FC<props> = ({ route, navigation, addToCart, products }):JSX.Element => {
-  
-    const data= route?.params?.data;
-    console.log("data",data)
+const ProductDetailScreen: React.FC<props> = ({ route, navigation, addToCart, products }): JSX.Element => {
+
+    const data = route?.params?.data;
+    console.log("data", data)
     const { count } = products;
     const [like, setLike] = useState(false)
 
@@ -28,11 +28,13 @@ const ProductDetailScreen:React.FC<props> = ({ route, navigation, addToCart, pro
         <SafeAreaView style={styles.productDetailContainer}>
             <ScrollView>
                 <View style={styles.productDetailHeaderContainer}>
-                    <TouchableOpacity onPress={()=>navigation.goBack()}>
+                    <TouchableOpacity onPress={() => navigation.goBack()}>
                         <AntDesign name="arrowleft" size={20} color={'black'} />
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => { navigation.navigate("Cart") }}>
-                        <Text style={styles.headerIconCount}>{count}</Text>
+                        <View style={styles.headerIconCount}>
+                            <Text style={styles.countText}>{count}</Text>
+                        </View>
                         <FontAwesome5 name={'opencart'} color={"black"} size={25} />
                     </TouchableOpacity>
                 </View>
@@ -43,11 +45,11 @@ const ProductDetailScreen:React.FC<props> = ({ route, navigation, addToCart, pro
                     <View style={styles.productInfoContainer}>
                         <Text style={styles.productName}>{data?.name}</Text>
                         <View style={styles.productLikeIcon}>
-                        <TouchableOpacity onPress={() => { setLike(!like) }}>
-                            <AntDesign name={like ? 'heart' : 'hearto'} size={20} style={{color: like ? 'red' : "gray" }} />
-                        </TouchableOpacity>
+                            <TouchableOpacity onPress={() => { setLike(!like) }}>
+                                <AntDesign name={like ? 'heart' : 'hearto'} size={20} style={{ color: like ? 'red' : "gray" }} />
+                            </TouchableOpacity>
                         </View>
-                       
+
                     </View>
                     <View style={styles.productRatingContainer}>
                         <View>
@@ -71,11 +73,11 @@ const ProductDetailScreen:React.FC<props> = ({ route, navigation, addToCart, pro
         </SafeAreaView>
     )
 }
-const mapStateToProps = (state:RootState) => ({
+const mapStateToProps = (state: RootState) => ({
     products: state.products,
 })
 const mapDispatchToProps = {
     addToCart,
 }
-export default connect(mapStateToProps,mapDispatchToProps)(ProductDetailScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(ProductDetailScreen)
 
